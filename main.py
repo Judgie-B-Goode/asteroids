@@ -5,6 +5,7 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 import sys
 from shot import Shot
+from scoreboard import Scoreboard
 
 def main():
     pygame.init()
@@ -23,6 +24,7 @@ def main():
     
     asteroidfield = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    scoreboard = Scoreboard()
     dt = 0
     
 
@@ -44,6 +46,7 @@ def main():
                     if asteroid.collision(shot):
                         asteroid.split()
                         shot.kill()
+        screen.blit(scoreboard.score_label, (500,20))
         pygame.display.flip()
 
         # limit the framerate to 60 FPS
